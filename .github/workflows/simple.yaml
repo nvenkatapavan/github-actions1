@@ -9,17 +9,30 @@ jobs:
       - name: multiline script
         run: |
           #!/usr/bin/env bash
-          echo "GITHUB_BASE_REF: ${GITHUB_BASE_REF}"
+
           if [ -z "${GITHUB_BASE_REF}"] ;  then
-            echo "Git Pull Request: false"
             export GIT_PULL_REQUEST=true            
           else :
-            echo "Git Pull Request: true"
             export GIT_PULL_REQUEST=true            
           fi
-          echo "Github Repository: $GITHUB_REPOSITORY"
-
-          export GIT_BRANCH="${GITHUB_REF#refs/heads/}"
+          export GIT_BRANCH="${GITHUB_REF#refs/heads/}
+          "
+          GIT_TAG=${GITHUB_REF#refs/tags/}
+          #short id
+          #GIT_COMMIT=""
+          
+          # Listing all Git Environment variables
+          echo "Nameo of Workflow: $GITHUB_WORKFLOW"
+          echo "Git Job ID: $GITHUB_JOB"
+          echo "Git Event: $GITHUB_EVENT_NAME"
+          echo "Git Tag: $GIT_TAG"
+          echo "Git Repository: $GITHUB_REPOSITORY"
           echo "Git Branch: $GIT_BRANCH"
-
           echo "Git Workspace: $GITHUB_WORKSPACE"
+          echo "Git Runner ID: $GITHUB_RUN_ID"
+          echo "Git Runner Number: $GITHUB_RUN_NUMBER"
+          echo "Git Commit: $GIT_COMMIT"
+          echo "Git Pull Request: $GIT_PULL_REQUEST"          
+          echo "Git PR Head Branch: $GITHUB_HEAD_REF"
+          echo "Git PR Base Branch: $GITHUB_BASE_REF"
+
