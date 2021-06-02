@@ -22,3 +22,4 @@ jobs:
           echo "Git Branch: $GIT_BRANCH"
 
           echo "Git Workspace: $GITHUB_WORKSPACE"
+          
