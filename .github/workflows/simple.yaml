@@ -6,8 +6,6 @@ jobs:
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
-      - name: echo a string
-        run: echo "Hello world"
       - name: multiline script
         run: |
           #!/usr/bin/env bash
@@ -20,9 +18,7 @@ jobs:
           fi
           echo "Github Repository: $GITHUB_REPOSITORY"
 
-          export GIT_BRANCH="${{ github.base_ref }}"
+          export GIT_BRANCH="${GITHUB_REF#refs/heads/}"
           echo "Git Branch: $GIT_BRANCH"
-          echo "GITHUB_REF: $GITHUB_REF"
-          echo "GITHUB_BASE_REF: $GITHUB_BASE_REF"
 
           echo "Git Workspace: $GITHUB_WORKSPACE"
