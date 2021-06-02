@@ -1,0 +1,26 @@
+name: Shell Commands
+
+on: [push, pull_request]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo a string
+        run: echo "Hello world"
+      - name: multiline script
+        run: |
+          #!/usr/bin/env bash
+
+          if "${{ !github.event.issue.pull_request }}" ;  then
+            export GIT_PULL_REQUEST=false
+            echo "Git Pull Request: false"
+          else :
+            echo "Git Pull Request: true"
+          fi
+          echo "Github Repository: $GITHUB_REPOSITORY"
+
+          export GIT_BRANCH="${{ github.base_ref }}"
+          echo "Git Branch: $GIT_BRANCH"
+
+          echo "Git Workspace: $GITHUB_WORKSPACE"
