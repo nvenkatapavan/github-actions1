@@ -10,7 +10,7 @@ jobs:
         run: |
           #!/usr/bin/env bash
           echo "GITHUB_BASE_REF: ${GITHUB_BASE_REF}"
-          if "${GITHUB_BASE_REF:-false}" ;  then
+          if "${GITHUB_BASE_REF}" != "" ;  then
             export GIT_PULL_REQUEST=true
             echo "Git Pull Request: true"
           else :
