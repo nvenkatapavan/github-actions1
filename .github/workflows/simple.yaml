@@ -11,12 +11,13 @@ jobs:
           #!/usr/bin/env bash
 
           if [ -z "${GITHUB_BASE_REF}"] ;  then
-            export GIT_PULL_REQUEST=true            
+            export GIT_PULL_REQUEST=false
+            export GIT_BRANCH="${GITHUB_REF#refs/heads/}"         
           else :
-            export GIT_PULL_REQUEST=true            
+            export GIT_PULL_REQUEST=true
+            export GIT_BRANCH="${GITHUB_HEAD_REF#refs/heads/}"            
           fi
-          export GIT_BRANCH="${GITHUB_REF#refs/heads/}
-          "
+
           GIT_TAG=${GITHUB_REF#refs/tags/}
           #short id
           #GIT_COMMIT=""
