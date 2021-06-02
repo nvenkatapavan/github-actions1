@@ -11,10 +11,11 @@ jobs:
           #!/usr/bin/env bash
           echo "GITHUB_BASE_REF: ${GITHUB_BASE_REF}"
           if [ -z "${GITHUB_BASE_REF}"] ;  then
-            export GIT_PULL_REQUEST=true
-            echo "Git Pull Request: true"
-          else :
             echo "Git Pull Request: false"
+            export GIT_PULL_REQUEST=true            
+          else :
+            echo "Git Pull Request: true"
+            export GIT_PULL_REQUEST=true            
           fi
           echo "Github Repository: $GITHUB_REPOSITORY"
 
