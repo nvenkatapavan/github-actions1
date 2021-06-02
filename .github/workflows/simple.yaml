@@ -10,11 +10,11 @@ jobs:
         run: |
           #!/usr/bin/env bash
 
-          if "${{ !github.event.issue.pull_request }}" ;  then
-            export GIT_PULL_REQUEST=false
-            echo "Git Pull Request: false"
-          else :
+          if "${GITHUB_BASE_REF:-false}" ;  then
+            export GIT_PULL_REQUEST=true
             echo "Git Pull Request: true"
+          else :
+            echo "Git Pull Request: false"
           fi
           echo "Github Repository: $GITHUB_REPOSITORY"
 
@@ -22,4 +22,3 @@ jobs:
           echo "Git Branch: $GIT_BRANCH"
 
           echo "Git Workspace: $GITHUB_WORKSPACE"
-          
