@@ -17,10 +17,8 @@ jobs:
             export GIT_PULL_REQUEST=true
             export GIT_BRANCH="${GITHUB_BASE_REF#refs/heads/}"            
           fi
-
           GIT_TAG=${GITHUB_REF#refs/tags/}
-          #short id
-          #GIT_COMMIT=""${GITHUB_SHA:0:7}""
+          GIT_COMMIT="${GITHUB_SHA:0:7}"
           
           # Listing all Git Environment variables
           echo "Nameo of Workflow: $GITHUB_WORKFLOW"
